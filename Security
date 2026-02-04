@@ -44,5 +44,27 @@ There are 4 steps in TLS
 TLS 1.3 used fewer calls over TLS 1.2 
 TLS 1.3 used Diffie-Hellman (DHE/ECDHE) for secure key exchanges instead of RSA.
 With Diffie–Hellman key exchange, two parties arrive at a common secret key, without passing the common secret key across the public channel 
-
 TSL is advanced version of SSL  both are used for establishing a secure communication channel between client and server.
+
+OpenSSL is a robust, open-source cryptography library widely used to secure communications over computer networks
+OpenSSL uses TLS 1.3 and AES Encryption 
+
+
+AWS KMS:
+Used in both Client Side Encryption and Server Side Encryption
+
+Client Side Encryption: We encrypt the data and manage our own keys and use KMS if required
+Server Side Encryption: AWS Encrypts the data and manages the keys for us.
+
+These keys that are managed by AWS are called are called Cusomer Master Keys (CMK's)
+Uses Harware Security Modules(HSM) to store these CMK's.
+It's integrated with cloud trail for monitoring , complaince.
+
+CMK ( Customer Master KEy)
+CMK's can only encrypt 4KB of data , Never leave region it's created.
+We have to use Data Key's for large data.
+Data Key's are generated for a particular Customer Master Key ( CMK)
+Use CMK to generate , encrypt/decrypt data key
+
+
+
