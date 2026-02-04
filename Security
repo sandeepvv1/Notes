@@ -1,0 +1,48 @@
+Encryption:
+
+HTTPS:
+
+Data -> AES Encnryption -> Encrypted Data
+Why AES Encryption:
+Instead of sending data as binary we encrypt and send it over network
+Even if Hacker decodes binary data to text he can't see original text wihtout the key.
+How to send key from client -> Server for Server to decrypt?
+We can't send the key over the network as hacker can get access to key and decrypt the data.
+
+Assymettric Encryption:
+Use 2 keys publick key + private key
+First client requests saying "I want to send Data" -> Server acks it and sends public key ( server has pub and prv key)
+Now CLient has the public key and the key it want's to encrypt the data with so Client encrypt's this data with public key and sends to server
+Hacker cannot decrypt this key because decryption can be done only with private key ( 1 key for encypt and 1 key for decrypt)
+Now Server used private key to decrypt it and get the key ( so client and server has the same key)
+We then use Key to Encyrp/Decrypt Data
+
+Man In the Middle:
+The above is not safe since There can be a Man in the Middle attack ( acting as server) who can send his public key 
+How can we avoid this ?
+We need to ensure that the public key is from the server
+
+Certificate Authority:
+It's a third party entity trusted by the browsers such as chrome , safari , etc.
+
+1. Client requests for public key , instead of sending to client server sends it to CA.
+2. CA contains: a. who it is for ? who has issued it ? 
+                b. Server Public key 
+                c. (Encrypt Server publick Key with CA private key/public key) -> Encrypted Server public key
+3. Server sends certificate to Client and Client validates it.
+
+Since Certificate authority's private key is crucial we have a chain of certs 
+There are many Intermediate Certificate's authority
+
+TLS:( Transport layer security)
+There are 4 steps in TLS
+1.TCP Hand Shake ( Agreeing protocol versions , Selecting cryptographic algorithms)
+2.Certificate Check ( Using Publick key ,private key , ca certs , as disccused above)
+3.Key exchange ( actual session key that both client and server have )
+4.Data Transmission.
+
+TLS 1.3 used fewer calls over TLS 1.2 
+TLS 1.3 used Diffie-Hellman (DHE/ECDHE) for secure key exchanges instead of RSA.
+With Diffie–Hellman key exchange, two parties arrive at a common secret key, without passing the common secret key across the public channel 
+
+TSL is advanced version of SSL  both are used for establishing a secure communication channel between client and server.
